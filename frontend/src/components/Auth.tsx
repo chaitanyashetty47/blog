@@ -9,6 +9,7 @@ import {jwtDecode} from 'jwt-decode';
 
 interface DecodedToken {
   name?: string;
+  id:number
 }
 
 
@@ -50,6 +51,9 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
                 if (decoded.name) {
                     console.log("THE NAME IS: ", decoded.name);
                     localStorage.setItem("userName", decoded.name);
+                    let id = decoded.id;
+
+                    localStorage.setItem("userId", id?.toString())
                 }
                 else {
                     localStorage.setItem("userName", "chaitanya");
